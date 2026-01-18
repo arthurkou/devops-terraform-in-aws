@@ -1,10 +1,10 @@
 terraform {
   //keep tf state in bucket - remote backend
   backend "s3" {
-    bucket         = "devops-na-nuvem-remote-backend-bucket"
-    key            = "terraform.tfstate"
-    region         = "us-east-1"
-    use_lockfile   = true
+    bucket       = "devops-na-nuvem-remote-backend-bucket"
+    key          = "terraform.tfstate"
+    region       = "us-east-1"
+    use_lockfile = true
     //dynamodb_table = "devops-na-nuvem-remote-backend-table"
   }
   required_providers {
