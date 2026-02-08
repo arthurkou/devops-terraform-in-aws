@@ -1,0 +1,15 @@
+resources:
+  - frontend/deployment.yml
+  - frontend/service.yml
+  - backend/deployment.yml
+  - backend/service.yml
+  - ingress.yml
+
+images:
+  - name: 781756701098.dkr.ecr.us-east-1.amazonaws.com/minicursodevopsaws/production/backend
+    newName: 781756701098.dkr.ecr.us-east-1.amazonaws.com/minicursodevopsaws/production/backend
+    newTag: v1.0
+
+  - name: 781756701098.dkr.ecr.us-east-1.amazonaws.com/minicursodevopsaws/production/frontend
+    newName: 781756701098.dkr.ecr.us-east-1.amazonaws.com/minicursodevopsaws/production/frontend
+    newTag: v1.0
