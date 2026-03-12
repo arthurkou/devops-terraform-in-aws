@@ -106,34 +106,48 @@ variable "queues" {
 variable "eks_cluster" {
 
   type = object({
-    name                                   = string
-    role_name                              = string
-    version                                = string
-    enabled_cluster_log_types              = list(string)
-    access_config_authentication_mode      = string
-    node_group_name                        = string
-    node_group_role_name                   = string
-    node_group_capacity_type               = string
-    node_group_instance_type               = list(string)
-    node_group_scaling_config_desired_size = string
-    node_group_scaling_config_max_size     = string
-    node_group_scaling_config_min_size     = string
+    name                                        = string
+    role_name                                   = string
+    version                                     = string
+    enabled_cluster_log_types                   = list(string)
+    access_config_authentication_mode           = string
+    bootstrap_cluster_creator_admin_permissions = bool
+    policy_arn_access                           = string
+    node_group_name                             = string
+    node_group_role_name                        = string
+    node_group_capacity_type                    = string
+    node_group_instance_type                    = list(string)
+    node_group_scaling_config_desired_size      = string
+    node_group_scaling_config_max_size          = string
+    node_group_scaling_config_min_size          = string
   })
 
   default = {
-    name                                   = "devops-na-nuvem-eks-cluster"
-    role_name                              = "DevOpsNaNuvemEKSClusterRole"
-    version                                = "1.31"
-    enabled_cluster_log_types              = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
-    access_config_authentication_mode      = "API_AND_CONFIG_MAP"
-    node_group_role_name                   = "DevOpsNaNuvemEKSNodeGroupRole"
-    node_group_name                        = "devops-na-nuvem-eks-node-group"
-    node_group_capacity_type               = "ON_DEMAND"
-    node_group_instance_type               = ["t3.small"]
-    node_group_scaling_config_desired_size = "2"
-    node_group_scaling_config_max_size     = "3"
-    node_group_scaling_config_min_size     = "2"
+    name                                        = "devops-na-nuvem-eks-cluster"
+    role_name                                   = "DevOpsNaNuvemEKSClusterRole"
+    version                                     = "1.31"
+    enabled_cluster_log_types                   = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+    access_config_authentication_mode           = "API_AND_CONFIG_MAP"
+    bootstrap_cluster_creator_admin_permissions = false
+    policy_arn_access                           = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+    node_group_role_name                        = "DevOpsNaNuvemEKSNodeGroupRole"
+    node_group_name                             = "devops-na-nuvem-eks-node-group"
+    node_group_capacity_type                    = "ON_DEMAND"
+    node_group_instance_type                    = ["t3.micro"]
+    node_group_scaling_config_desired_size      = "2"
+    node_group_scaling_config_max_size          = "3"
+    node_group_scaling_config_min_size          = "2"
   }
+}
+
+variable "granted_arn_users" {
+  type = list(string)
+  default = ["arn:aws:iam::781756701098:user/administrator" ]
+}
+
+variable "granted_arn_roles" {
+  type = list(string)
+  default = [ "arn:aws:iam::781756701098:role/DevOpsNaNuvemEKSClusterRole"] 
 }
 
 variable "ecr_repositories" {

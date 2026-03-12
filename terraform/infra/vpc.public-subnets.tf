@@ -4,7 +4,13 @@ resource "aws_subnet" "public" {
   cidr_block              = var.vpc.public_subnets[count.index].cidr_block
   availability_zone       = var.vpc.public_subnets[count.index].availability_zone
   map_public_ip_on_launch = var.vpc.public_subnets[count.index].map_public_ip_on_launch
-  tags                    = { Name = "${var.vpc.name}-${var.vpc.public_subnets[count.index].name}" }
+
+  tags = merge(
+    {
+      Name                     = "${var.vpc.name}-${var.vpc.public_subnets[count.index].name}"
+      "kubernetes.io/role/elb" = "1"
+    }
+  )
 }
 
 resource "aws_route_table_association" "public" {

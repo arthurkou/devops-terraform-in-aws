@@ -4,4 +4,5 @@ resource "aws_internet_gateway" "this" {
   tags = {
     Name = "${var.vpc.name}-${var.vpc.internet_gateway_name}"
   }
+
 }

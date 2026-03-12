@@ -5,7 +5,8 @@ resource "aws_eks_cluster" "this" {
   enabled_cluster_log_types = var.eks_cluster.enabled_cluster_log_types
 
   access_config {
-    authentication_mode = var.eks_cluster.access_config_authentication_mode
+    authentication_mode                         = var.eks_cluster.access_config_authentication_mode
+    bootstrap_cluster_creator_admin_permissions = var.eks_cluster.bootstrap_cluster_creator_admin_permissions
   }
 
   vpc_config {

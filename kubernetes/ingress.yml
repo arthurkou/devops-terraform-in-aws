@@ -5,7 +5,6 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/load-balancer-name: devops-na-nuvem-ingress
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/subnets: subnet-03384f8c2f40912db, subnet-05b2ce90d7aa2182e
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
     alb.ingress.kubernetes.io/target-type: instance
 spec:
