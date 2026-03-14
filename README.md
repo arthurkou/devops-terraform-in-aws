@@ -1,0 +1,1 @@
+![AWS Cloud Architecture](generated-diagrams/aws-architecture.png)
