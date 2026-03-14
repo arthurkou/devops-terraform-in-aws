@@ -1,1 +1,1 @@
-![AWS Cloud Architecture](generated-diagrams/aws-architecture.png)
+![AWS Cloud Architecture](docs/aws-architecture.png)
